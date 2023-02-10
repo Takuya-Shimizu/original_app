@@ -10,6 +10,7 @@
 
 ## カリキュラム外の技術
 - gem/cancancan
+- gem/rails_admin
 
 ## 実行手順
 ````
@@ -36,4 +37,4 @@ https://cacoo.com/diagrams/imwXF3UKkcaug2yX/35B2F
 ![ER図](img/ER図.png)
 
 ## 画面遷移図
-![画面遷移図](img/画面遷移図.png)
+![画面遷移図](img/画面遷移図_2.png)
