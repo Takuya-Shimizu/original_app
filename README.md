@@ -34,7 +34,7 @@ https://docs.google.com/spreadsheets/d/1jEQr6j55wDRo-A6KAVrvqqaDAUKWt6IQqGPR4Ofg
 https://cacoo.com/diagrams/imwXF3UKkcaug2yX/35B2F
 
 ## ER図
-![ER図](img/ER図.png)
+![ER図](img/ER図_2.png)
 
 ## 画面遷移図
 ![画面遷移図](img/画面遷移図_2.png)
