@@ -1,0 +1,27 @@
+ja:
+  activerecord:
+    models:
+      post: 投稿
+      user: ユーザー
+      comment: コメント
+      genre: ジャンル
+      label: ラベル
+    attributes:
+      post:
+        title: タイトル
+        content: 内容
+      user:
+        name: 名前
+        email: メールアドレス
+        encrypted_password: パスワード
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: ログインを記憶
+        admin: 管理者権限
+        specialist: スペシャリスト認定
+      comment:
+        content: 内容
+      genre:
+        name: ジャンル名
+      label:
+        name: ラベル名
