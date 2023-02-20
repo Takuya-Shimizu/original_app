@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
+<% if current_user.try(:admin?) %>
+  <h1>Posts_admin</h1>
+<% else %>
+  <h1>Posts</h1>
+<% end %>
 
 <table>
   <thead>
