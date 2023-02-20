@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   # before_action :login_required
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  # rescue_from CanCan::AccessDenied do |_exception|
+  #   redirect_to root_path, alert: '画面を閲覧する権限がありません'
+  # end
+
   private
 
   def login_required
