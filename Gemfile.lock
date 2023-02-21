@@ -91,6 +91,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.10.2)
+      devise (>= 4.8.0)
     erubi (1.12.0)
     ffi (1.15.5)
     globalid (1.1.0)
@@ -277,6 +279,7 @@ DEPENDENCIES
   cancancan
   capybara (>= 3.26)
   devise
+  devise-i18n
   jbuilder (~> 2.7)
   letter_opener_web
   listen (~> 3.3)
