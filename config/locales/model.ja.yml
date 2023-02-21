@@ -6,6 +6,7 @@ ja:
       comment: コメント
       genre: ジャンル
       label: ラベル
+      favorite: お気に入り
     attributes:
       post:
         title: タイトル
