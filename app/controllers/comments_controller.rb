@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_post, only: [:create, :edit, :update]
+  before_action :own_comment, only: %i[ edit update destroy ]
+
 
   def create
     @comment = @post.comments.build(comment_params)
@@ -50,5 +52,12 @@ class CommentsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:post_id])
+  end
+
+  def own_comment
+    @comment = Comment.find(params[:id])
+    unless current_user == Comment.find(params[:id]).user
+      redirect_to posts_path, notice: '他人のコメントは編集・削除できません'
+    end
   end
 end
