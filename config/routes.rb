@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     post 'users/admin_guest_sign_in', to: 'users/sessions#admin_guest_sign_in'
   end
 
+  resources :users, only: [:show]
+
   resources :favorites, only: [:create, :destroy]
   
   resources :posts do

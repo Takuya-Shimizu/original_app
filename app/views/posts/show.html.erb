@@ -1,8 +1,11 @@
 <div class="container">
 
   <div class="post-text">
-    <p><strong>タイトル:</strong>:<%= @post.title %></p>
-    <p><strong>内容:</strong>:<%= @post.content %></p>
+    <p><strong>タイトル:</strong><%= @post.title %></p>
+    <p><strong>内容:</strong><%= @post.content %></p>
+    <p><strong>ラベル:</strong><% @post.labels.each do |label| %>
+                                <%= label.name %>
+                              <% end %></p>
   </div>
 
   <% unless @post.user_id == current_user.id %>

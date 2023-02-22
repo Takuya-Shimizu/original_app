@@ -7,10 +7,12 @@ ja:
       genre: ジャンル
       label: ラベル
       favorite: お気に入り
+      postlabel: ポストラベル
     attributes:
       post:
         title: タイトル
         content: 内容
+        label: ラベル
       user:
         name: 名前
         email: メールアドレス
