@@ -4,10 +4,11 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @posts = Post.tagged_with(params[:label])
   end
 
   def show
-    @favorite = current_user.favorites.find_by(post_id: @post.id)
+    # @favorite = current_user.favorites.find_by(post_id: @post.id)
     @comments = @post.comments
     @comment = @post.comments.build
   end
@@ -60,6 +61,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content, { label_ids: [] })
   end
 end

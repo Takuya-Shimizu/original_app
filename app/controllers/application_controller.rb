@@ -8,6 +8,11 @@ class ApplicationController < ActionController::Base
   #   redirect_to root_path, alert: '画面を閲覧する権限がありません'
   # end
 
+  def after_sign_in_path_for(resource)
+    # ログイン後に遷移する画面のパスを指定する
+    posts_path
+  end
+
   private
 
   def login_required

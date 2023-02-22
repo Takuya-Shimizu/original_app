@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_19_231028) do
+ActiveRecord::Schema.define(version: 2023_02_21_090531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(version: 2023_02_19_231028) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "postlabels", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "label_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["label_id"], name: "index_postlabels_on_label_id"
+    t.index ["post_id"], name: "index_postlabels_on_post_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -78,6 +87,8 @@ ActiveRecord::Schema.define(version: 2023_02_19_231028) do
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "posts"
   add_foreign_key "favorites", "users"
+  add_foreign_key "postlabels", "labels"
+  add_foreign_key "postlabels", "posts"
   add_foreign_key "posts", "genres"
   add_foreign_key "posts", "labels"
   add_foreign_key "posts", "users"
