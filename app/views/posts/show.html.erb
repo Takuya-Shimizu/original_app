@@ -28,6 +28,6 @@
   <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
 
 
-  <%= link_to '編集', edit_post_path(@post) %>
+  <%= link_to '編集', edit_post_path(@post), class: 'btn btn-info' %>
   <%= link_to '戻る', posts_path %>
 </div>

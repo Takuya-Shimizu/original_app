@@ -1,10 +1,11 @@
 class CommentsController < ApplicationController
-  before_action :set_post, only: [:create, :edit, :update]
+  before_action :set_post, only: %i[ create edit update ]
   before_action :own_comment, only: %i[ edit update destroy ]
 
 
   def create
     @comment = @post.comments.build(comment_params)
+    @comment.user_id = current_user.id
     respond_to do |format|
       if @comment.save
         format.js { render :index }
@@ -24,15 +25,15 @@ class CommentsController < ApplicationController
 
   def update
     @comment = @post.comments.find(params[:id])
-      respond_to do |format|
-        if @comment.update(comment_params)
-          flash.now[:notice] = 'コメントが編集されました'
-          format.js { render :index }
-        else
-          flash.now[:notice] = 'コメントの編集に失敗しました'
-          format.js { render :edit }
-        end
+    respond_to do |format|
+      if @comment.update(comment_params)
+        flash.now[:notice] = 'コメントが編集されました'
+        format.js { render :index }
+      else
+        flash.now[:notice] = 'コメントの編集に失敗しました'
+        format.js { render :edit }
       end
+    end
   end
 
   def destroy

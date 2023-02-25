@@ -67,7 +67,7 @@ class PostsController < ApplicationController
 
   def own_post
     @post = Post.find(params[:id])
-    unless current_user == Post.find(params[:id]).user
+    unless current_user == @post.user
       redirect_to posts_path, notice: '他人の投稿は編集・削除できません'
     end
   end

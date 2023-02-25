@@ -24,9 +24,11 @@
         <td><% post.labels.each do |label| %>
               <%= label.name %>
             <% end %></td>
-        <td><%= link_to '詳細', post %></td>
-        <td><%= link_to '編集', edit_post_path(post) %></td>
-        <td><%= link_to '削除', post, method: :delete, data: { confirm: '削除して良いですか？' } %></td>
+        <td><%= link_to '詳細', post, class: 'btn btn-dark' %></td>
+        <% if post.user == current_user %>
+          <td><%= link_to '編集', edit_post_path(post), class: 'btn btn-info' %></td>
+          <td><%= link_to '削除', post, method: :delete, data: { confirm: '削除して良いですか？' }, class: 'btn btn-danger' %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  root 'welcome#index'
+  root 'welcome#top'
   
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
