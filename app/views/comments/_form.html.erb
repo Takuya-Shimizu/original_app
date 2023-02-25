@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+    <strong><%= form.label :content %></strong>
+    <%= form.text_area :content, placeholder: "コメントを入力してください", class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "コメント登録する", class: 'btn btn-info' %>
   </div>
 <% end %>

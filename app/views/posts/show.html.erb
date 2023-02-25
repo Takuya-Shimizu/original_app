@@ -1,22 +1,25 @@
 <div class="container">
 
   <div class="post-text">
-    <p><strong>タイトル:</strong><%= @post.title %></p>
-    <p><strong>内容:</strong><%= @post.content %></p>
-    <p><strong>ラベル:</strong><% @post.labels.each do |label| %>
-                                <%= label.name %>
-                              <% end %></p>
+    <strong>タイトル:</strong>
+    <p class="form-control"><%= @post.title %></p>
+    <strong>内容:</strong>
+    <p class="form-control"><%= @post.content %></p>
+    <strong>ラベル:</strong>
+    <p class="form-control"><% @post.labels.each do |label| %>
+                              <%= label.name %>
+                            <% end %></p>
   </div>
 
   <% unless @post.user_id == current_user.id %>
     <% if @favorite.present? %>
-      <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+      <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-warning' %>
     <% else %>
-      <%= link_to 'お気に入りする', favorites_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %>
+      <%= link_to 'お気に入りする', favorites_path(post_id: @post.id), method: :post, class: 'btn btn-danger' %>
     <% end %>
   <% end %>
 
-  <p>コメント一覧</p>
+  <p><strong>コメント一覧</strong></p>
 
   <!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->
   <div id="comments_area">
@@ -27,7 +30,8 @@
   <!-- コメント入力欄をpostの詳細ページに表示するためのrender -->
   <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
 
-
-  <%= link_to '編集', edit_post_path(@post), class: 'btn btn-info' %>
-  <%= link_to '戻る', posts_path %>
+  <div class="mt-4">
+    <%= link_to '投稿を編集する', edit_post_path(@post), class: 'btn btn-success' %>
+    <%= link_to '戻る', posts_path %>
+  </div>
 </div>

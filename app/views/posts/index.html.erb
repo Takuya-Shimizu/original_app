@@ -4,7 +4,7 @@
   <h1>投稿一覧</h1>
 <% end %>
 
-<table>
+<table class='table'>
   <thead>
     <tr>
       <th>ユーザー名</th>
@@ -36,4 +36,4 @@
 
 <br>
 
-<%= link_to '新規投稿', new_post_path %>
+<%= link_to '新規投稿', new_post_path, class: 'btn btn-secondary' %>

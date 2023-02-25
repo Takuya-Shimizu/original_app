@@ -1,39 +1,45 @@
-<%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= post.errors.count %>件のエラーがあります</h2>
+<div class='d-flex justify-content-center'>
+  <div class='post-new'>
+    <%= form_with(model: post, local: true) do |form| %>
+      <% if post.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= post.errors.count %>件のエラーがあります</h2>
 
-      <ul>
-        <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+            <% post.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+      <div class="field">
+        <%= form.label :title %>
+        <%= form.text_field :title, placeholder: "タイトルを入力してください", class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
+      <div class="field">
+        <%= form.label :content %>
+        <%= form.text_area :content, placeholder: "内容を入力してください", class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= form.label :label %> 
-    <%# collection_check_boxes(オブジェクト名, メソッド名, コレクションオブジェクト（配列など）, 値として使う属性名（シンボル） , テキストとして使う属性名（シンボル）) %> 
-    <%= form.collection_check_boxes(:label_ids , Label.all ,:id ,:name) do |b| %> 
-      <%# b.label { b.check_box + b.text } %> 
-      <% b.label(class:"checkbox-inline input_checkbox") { b.check_box + b.text } %> 
-      <%#= b.check_box + b.text %> 
-      <%#= check_box_tag "post[label_ids][]", label.id %> 
-      <%#= label.name %> 
+      <div class="field">
+        <%= form.label :label %>
+        <div class=''>
+          <%= form.collection_check_boxes(:label_ids , Label.all ,:id ,:name) do |b| %>
+              <%= b.label class: "tag" do %>
+              <%= b.check_box class: "box" do %>
+                <%= b.check_box + b.text %>
+                <% end %>
+                <%= b.label{b.text} %>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= form.submit class: 'btn btn-secondary' %>
+      </div>
     <% end %>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
