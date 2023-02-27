@@ -10,12 +10,13 @@
                               <%= label.name %>
                             <% end %></p>
   </div>
-
-  <% unless @post.user_id == current_user.id %>
-    <% if @favorite.present? %>
-      <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-warning' %>
-    <% else %>
-      <%= link_to 'お気に入りする', favorites_path(post_id: @post.id), method: :post, class: 'btn btn-danger' %>
+  <% if current_user %>
+    <% unless @post.user_id == current_user.id %>
+      <% if @favorite.present? %>
+        <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-warning' %>
+      <% else %>
+        <%= link_to 'お気に入りする', favorites_path(post_id: @post.id), method: :post, class: 'btn btn-danger' %>
+      <% end %>
     <% end %>
   <% end %>
 
@@ -31,7 +32,9 @@
   <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
 
   <div class="mt-4">
+  <% if current_user == @post.user %>
     <%= link_to '投稿を編集する', edit_post_path(@post), class: 'btn btn-success' %>
+  <% end %>
     <%= link_to '戻る', posts_path %>
   </div>
 </div>
