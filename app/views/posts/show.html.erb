@@ -4,7 +4,7 @@
     <strong>タイトル:</strong>
     <p class="form-control"><%= @post.title %></p>
     <strong>内容:</strong>
-    <p class="form-control"><%= @post.content %></p>
+    <p><textarea class="form-control text-wrap" rows="6"><%= @post.content %></textarea></p>
     <strong>ラベル:</strong>
     <p class="form-control"><% @post.labels.each do |label| %>
                               <%= label.name %>
