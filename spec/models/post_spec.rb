@@ -21,5 +21,17 @@ RSpec.describe '投稿モデル機能', type: :model do
         expect(post).to be_valid
       end
     end
+    context 'contentの文字数が400字以内の場合' do
+      it 'バリデーションが通る' do
+        post = Post.new(title: '成功!', content: 'a' * 400, user_id: user.id)
+        expect(post).to be_valid
+      end
+    end
+    context 'contentの文字数が401字以上の場合' do
+      it 'バリデーションに引っかかる' do
+        post = Post.new(title: '成功!', content: 'a' * 401, user_id: user.id)
+        expect(post).not_to be_valid
+      end
+    end
   end
 end

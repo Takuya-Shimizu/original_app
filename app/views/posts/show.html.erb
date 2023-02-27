@@ -4,11 +4,12 @@
     <strong>タイトル:</strong>
     <p class="form-control"><%= @post.title %></p>
     <strong>内容:</strong>
-    <p><textarea class="form-control text-wrap" rows="6"><%= @post.content %></textarea></p>
+    <div class="form-control-custom"><%= @post.content %></div>
     <strong>ラベル:</strong>
     <p class="form-control"><% @post.labels.each do |label| %>
                               <%= label.name %>
-                            <% end %></p>
+                            <% end %>
+    </p>
   </div>
   <% if current_user %>
     <% unless @post.user_id == current_user.id %>
