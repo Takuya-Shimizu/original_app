@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :login_required
+  # before_action :authenticate_user!
   before_action :set_post, only: %i[ create edit update ]
   before_action :own_comment, only: %i[ edit update destroy ]
 
@@ -61,5 +62,9 @@ class CommentsController < ApplicationController
     unless current_user == Comment.find(params[:id]).user
       redirect_to posts_path, notice: '他人のコメントは編集・削除できません'
     end
+  end
+
+  def login_required
+    redirect_to new_user_session_path, alert: 'ログインしてください' unless current_user
   end
 end
