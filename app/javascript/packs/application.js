@@ -7,9 +7,7 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import '../stylesheets/top';
-import '../stylesheets/registrations_new';
-import '../stylesheets/post_form';
+
 
 Rails.start()
 Turbolinks.start()
